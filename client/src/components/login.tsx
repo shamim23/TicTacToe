@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 
-const Login = ({ setIsAuthenticated }) => {
+type LoginProps = {
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
+}
+
+const Login: React.FC<LoginProps> = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Hook for navigation
 
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5001/api/auth/login', { username, password });
+      const response = await axios.post('http://localhost:3001/api/auth/login', { username, password });
       localStorage.setItem('token', response.data.token); // Store token in local storage
       setIsAuthenticated(true);
       navigate('/game'); // Navigate to the game page

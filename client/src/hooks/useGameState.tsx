@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction } from 'react';
 import axios from 'axios';
 
-const useGameState = (userId) => {
+const useGameState = (userId: number) => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const [winner, setWinner] = useState(null);
-  const [winningSquares, setWinningSquares] = useState([]);
+  const [winner, setWinner] = useState<any>(null);
+  const [winningSquares, setWinningSquares] = useState<any[]>([]);
 
   useEffect(() => {
     const loadGameState = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/api/game/load-game', { userId });
+        const response = await axios.post('http://localhost:3001/api/game/load-game', { userId });
         if (response.data.gameState) {
           setBoard(response.data.gameState);
         }

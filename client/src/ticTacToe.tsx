@@ -7,7 +7,7 @@ import GameControls from './components/GameControls';
 import axios from 'axios';
 import './components/styles/ticTacToe.css'
 
-const TicTacToe = ({ userId, username }) => {
+const TicTacToe: React.FC<any> = ({ userId, username }) => {
   const {
     board,
     isXNext,
@@ -23,12 +23,12 @@ const TicTacToe = ({ userId, username }) => {
   const { scores, updateScore } = useScore(userId);
 
 
-  const handleClick = async (index) => {
+  const handleClick = async (index: number) => {
     if (board[index] || winner) return;
     await updateGameState(index);
   };
 
-  const updateGameState = async (index) => {
+  const updateGameState = async (index: number) => {
     const newBoard = [...board];
     newBoard[index] = 'X';
     setBoard(newBoard);
@@ -49,7 +49,7 @@ const TicTacToe = ({ userId, username }) => {
     }
   };
 
-  const computerMove = (currentBoard) => {
+  const computerMove = (currentBoard: any) => {
     // Check for a winning move for the computer
     for (let i = 0; i < 9; i++) {
       if (currentBoard[i] === null) {
@@ -84,7 +84,7 @@ const TicTacToe = ({ userId, username }) => {
     }
 
     // If no winning or blocking move, make a random move
-    const emptyIndices = currentBoard.map((val, index) => (val === null ? index : null)).filter(val => val !== null);
+    const emptyIndices = currentBoard.map((val: any, index: number) => (val === null ? index : null)).filter((val: any) => val !== null);
     const randomIndex = emptyIndices[Math.floor(Math.random() * emptyIndices.length)];
     currentBoard[randomIndex] = 'O';
     setBoard(currentBoard);
@@ -93,14 +93,14 @@ const TicTacToe = ({ userId, username }) => {
 
   const saveGameState = async () => {
     try {
-      await axios.post('http://localhost:5000/api/game/save-game', { userId, gameState: board });
+      await axios.post('http://localhost:3001/api/game/save-game', { userId, gameState: board });
       alert('Game state saved successfully!');
     } catch (error) {
       console.error('Error saving game state:', error);
     }
   };
 
-  const calculateWinningSquares = (squares) => {
+  const calculateWinningSquares = (squares: any) => {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -120,7 +120,7 @@ const TicTacToe = ({ userId, username }) => {
     return [];
   };
 
-  const calculateWinner = (squares) => {
+  const calculateWinner = (squares: any) => {
     const lines = [
       [0, 1, 2],
       [3, 4, 5],

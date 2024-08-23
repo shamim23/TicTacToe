@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Register = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [message, setMessage] = useState('');
+const Register: React.FC = () => {
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5001/api/register', { username, password });
+      await axios.post('http://localhost:3001/api/register', { username, password });
       setMessage('User registered successfully!');
     } catch (err) {
       setMessage('Error registering user');

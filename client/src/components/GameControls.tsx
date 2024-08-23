@@ -1,6 +1,11 @@
 import React from 'react';
 
-const GameControls = ({ resetGame, saveGameState }) => {
+type GameControlsProps = {
+  resetGame: (args: any) => void;
+  saveGameState: (args: any) => void;
+}
+
+const GameControls: React.FC<GameControlsProps> = ({ resetGame, saveGameState }) => {
   return (
     <div className="game-controls">
       <button className="reset" onClick={resetGame}>

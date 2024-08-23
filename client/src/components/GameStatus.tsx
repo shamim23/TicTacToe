@@ -1,6 +1,12 @@
 import React from 'react';
 
-const GameStatus = ({ winner, isXNext, username }) => {
+type GameStatusProps = {
+  winner: any;
+  isXNext: boolean;
+  username: string
+}
+
+const GameStatus: React.FC<GameStatusProps> = ({ winner, isXNext, username }) => {
   return (
     <div className="status">
       {winner

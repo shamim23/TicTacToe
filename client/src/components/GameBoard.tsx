@@ -1,7 +1,7 @@
 import React from 'react';
 
-const GameBoard = ({ board, winningSquares, handleClick }) => {
-  const renderSquare = (index) => (
+const GameBoard: React.FC<any> = ({ board, winningSquares, handleClick }) => {
+  const renderSquare = (index: number) => (
     <button
       className={`square ${winningSquares.includes(index) ? 'winner' : ''}`}
       onClick={() => handleClick(index)}

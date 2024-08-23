@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './styles/auth.css'; 
+import './styles/auth.css';
 
-const Auth = ({ setIsAuthenticated, setUserId, setUsername }) => {
+type AuthProps = {
+  setIsAuthenticated: Dispatch<SetStateAction<boolean>>;
+  setUserId: Dispatch<SetStateAction<string>>
+  setUsername: Dispatch<SetStateAction<string>>
+}
+
+const Auth: React.FC<any> = ({ setIsAuthenticated, setUserId, setUsername }) => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
@@ -11,15 +17,15 @@ const Auth = ({ setIsAuthenticated, setUserId, setUsername }) => {
   
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleUserLogin = async (e) => {
+  const handleUserLogin = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5001/api/auth/login', formData);
+      const response = await axios.post('http://localhost:3001/api/auth/login', formData);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
       localStorage.setItem('username', formData.username);
@@ -31,19 +37,19 @@ const Auth = ({ setIsAuthenticated, setUserId, setUsername }) => {
       setSuccessMessage('Login Successful');
       setTimeout(() => setSuccessMessage(''), 3000);
       navigate('/game');
-    } catch (err) {
+    } catch (err: any) {
       setError(err.response ? err.response.data.message : 'An error occurred');
     }
   };
 
-  const handleUserRegistration = async (e) => {
+  const handleUserRegistration = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', formData);
+      await axios.post('http://localhost:3001/api/auth/register', formData);
       setIsLogin(true);
       setSuccessMessage('Registration Successful');
       setTimeout(() => setSuccessMessage(''), 3000);
-    } catch (err) {
+    } catch (err: any) {
       setError(err.response ? err.response.data.message : 'An error occurred');
     }
   };

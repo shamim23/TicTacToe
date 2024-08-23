@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const useScore = (userId) => {
+const useScore = (userId: any) => {
   const [scores, setScores] = useState({ wins: 0, losses: 0, ties: 0 });
 
-  const updateScore = async (result) => {
+  const updateScore = async (result: any) => {
     try {
-      await axios.post('http://localhost:5000/api/game/update-score', { userId, result });
-      setScores((prevScores) => ({
+      await axios.post('http://localhost:3001/api/game/update-score', { userId, result });
+      setScores((prevScores: any) => ({
         ...prevScores,
         [result]: prevScores[result] + 1,
       }));

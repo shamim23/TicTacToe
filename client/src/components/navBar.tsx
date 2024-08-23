@@ -2,7 +2,12 @@ import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './styles/NavBar.css'; // Import the CSS for styling
 
-const NavBar = ({ onLogout, onShowLeaderboard }) => {
+type NavBarProps = {
+  onLogout: () => any
+  onShowLeaderboard: () => any
+}
+
+const NavBar: React.FC<NavBarProps> = ({ onLogout, onShowLeaderboard }) => {
   const location = useLocation();
   const navigate = useNavigate(); // Use useNavigate for navigation
 
