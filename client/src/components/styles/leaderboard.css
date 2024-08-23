@@ -1,0 +1,59 @@
+
+
+/* .blog {
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	bottom: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+} */
+
+
+
+/* leaderboard */
+.leaderboard {
+    background: linear-gradient(to bottom, #151515, #545863);
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    text-align: center;
+}
+
+/* head */
+.leaderboard .head {
+	color: snow;
+	font-size: 20px;
+	text-align: center;
+}
+.leaderboard .head h1 {
+	display: inline-block;
+	margin-left: 4px;
+}
+
+/* body */
+.leaderboard .body {
+	color: snow;
+	font-size: 16px;
+}
+.leaderboard ol {
+	counter-reset: number; 
+    padding: 10px;
+}
+.leaderboard li {
+	padding: 16px;
+	display: flex;
+}
+.leaderboard li mark {
+	flex-grow: 1;
+	color: snow;
+	background-color: transparent;
+}
+.leaderboard li:before {
+	counter-increment: number; /* 遞增計數器 */
+	content: counter(number) "."; /* 顯示計數器 */
+	margin-right: 4px;
+}
+
