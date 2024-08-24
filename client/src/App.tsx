@@ -76,7 +76,7 @@ const App: React.FC = () => {
                   setUserId={setUserId}
                   setUsername={setUsername}
                 />
-                <img src={'http://localhost:3001/tictactoe.png'} alt="Description" className="auth-image" />
+                <img src={'https://logam.in/cdn/shop/files/IMG_1123low_1200x.jpg'} alt="Description" className="auth-image" />
               </div>
             }
           />
