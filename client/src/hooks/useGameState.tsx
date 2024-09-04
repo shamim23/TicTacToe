@@ -10,7 +10,7 @@ const useGameState = (userId: number) => {
   useEffect(() => {
     const loadGameState = async () => {
       try {
-        const response = await axios.post('http://localhost:3001/api/game/load-game', { userId });
+        const response = await axios.post('http://localhost:5001/api/game/load-game', { userId });
         if (response.data.gameState) {
           setBoard(response.data.gameState);
         }
