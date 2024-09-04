@@ -93,7 +93,7 @@ const TicTacToe: React.FC<any> = ({ userId, username }) => {
 
   const saveGameState = async () => {
     try {
-      await axios.post('http://localhost:3001/api/game/save-game', { userId, gameState: board });
+      await axios.post('http://localhost:5001/api/game/save-game', { userId, gameState: board });
       alert('Game state saved successfully!');
     } catch (error) {
       console.error('Error saving game state:', error);

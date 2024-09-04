@@ -25,7 +25,7 @@ const Auth: React.FC<any> = ({ setIsAuthenticated, setUserId, setUsername }) => 
   const handleUserLogin = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/api/auth/login', formData);
+      const response = await axios.post('http://localhost:5001/api/auth/login', formData);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
       localStorage.setItem('username', formData.username);
@@ -45,7 +45,7 @@ const Auth: React.FC<any> = ({ setIsAuthenticated, setUserId, setUsername }) => 
   const handleUserRegistration = async (e: any) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/api/auth/register', formData);
+      await axios.post('http://localhost:5001/api/auth/register', formData);
       setIsLogin(true);
       setSuccessMessage('Registration Successful');
       setTimeout(() => setSuccessMessage(''), 3000);

@@ -12,7 +12,7 @@ const Leaderboard: React.FC = () => {
 
       try {
         
-        const response = await axios.get('http://localhost:3001/api/game/leaderboard');
+        const response = await axios.get('http://localhost:5001/api/game/leaderboard');
         setLeaderboard(response.data);
       } catch (err) {
         setError('Error fetching leaderboard');
